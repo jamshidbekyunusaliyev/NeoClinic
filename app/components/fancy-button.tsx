@@ -1,6 +1,7 @@
 "use client";
 
 import { type ButtonHTMLAttributes, useState } from "react";
+import Link from "next/link";
 import { LoaderCircle } from "lucide-react";
 
 type Variant = "glow" | "liquid" | "magnetic" | "ghost-neon";
@@ -8,6 +9,11 @@ type FancyButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   loading?: boolean;
 };
+type FancyLinkProps = { href: string; variant?: Variant; className?: string; children: React.ReactNode };
+
+export function FancyLink({ href, variant = "glow", className = "", children }: FancyLinkProps) {
+  return <Link href={href} className={`fancy-button fancy-${variant} ${className}`}><span className="fancy-button-content">{children}</span></Link>;
+}
 
 export function FancyButton({ variant = "glow", loading = false, disabled, className = "", children, onPointerMove, onPointerLeave, onClick, ...props }: FancyButtonProps) {
   const [cursor, setCursor] = useState({ x: 50, y: 50 });

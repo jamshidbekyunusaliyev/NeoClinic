@@ -1,5 +1,6 @@
 export type Doctor = {
   id: string;
+  databaseId: string;
   name: string;
   speciality: string;
   degree: string;
@@ -36,7 +37,7 @@ export const doctors: Doctor[] = [
   { id: "grace-kim", name: "Dr. Grace Kim", speciality: "Pediatricians", degree: "MD · Pediatrics, FAAP", experience: 15, fees: 160, rating: 4.99, reviews: 328, available: true, today: true, image: "photo-1594824476967-48c8b964273f", color: "#bbf7d0", bio: "Dr. Kim creates a calm, welcoming space for children and the people who care for them." },
   { id: "james-okafor", name: "Dr. James Okafor", speciality: "Neurologist", degree: "MD · Neurology, PhD", experience: 20, fees: 250, rating: 4.93, reviews: 176, available: false, today: false, image: "photo-1560250097-0b93528c311a", color: "#a5f3fc", bio: "An experienced neurologist delivering advanced care with compassion and a strong patient partnership." },
   { id: "layla-hassan", name: "Dr. Layla Hassan", speciality: "Gastroenterologist", degree: "MD · Digestive Health", experience: 10, fees: 175, rating: 4.92, reviews: 162, available: true, today: true, image: "photo-1551836022-91a0e9f53e3d", color: "#fed7aa", bio: "Dr. Hassan brings curiosity, careful listening, and evidence-based treatment to every digestive health visit." },
-];
+].map((doctor, index) => ({ ...doctor, databaseId: `64f000000000${String(index + 1).padStart(12, "0")}` }));
 
 export function doctorImage(image: string) {
   return `https://images.unsplash.com/${image}?auto=format&fit=crop&w=900&q=85`;
